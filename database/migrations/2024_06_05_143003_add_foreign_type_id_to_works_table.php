@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('works', function (Blueprint $table) {
-            $table->unseignedBigInteger('type_id')->nullable();
-            $table->foreign('type_id')->references('id')->on('works');
+            // aggiungo la colonna
+            $table->unsignedBigInteger('type_id')->nullable()->after('id');
+            // creo il vincolo
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');
+
+            // alternativa
+            // $table->foreignId('type_id')->constrained();
         });
     }
 
@@ -23,7 +28,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('works', function (Blueprint $table) {
-            $table->dropForeign('type_id');
+            // rimuovo vincolo
+            $table->dropForeign('works_type_id_foreign');
+            // rimuovo colonna
             $table->dropColumn('type_id');
         });
     }

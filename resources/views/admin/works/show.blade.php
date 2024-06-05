@@ -10,6 +10,9 @@
       <div class="card-body">
         <h3>Slug:</h3>
         <p>{{ $work->slug }}</p>
+        <h3>Type:</h3>
+        <p>{{ $work->type ? $work->type->name : 'Type not selected.' }}</p>
+
         <h3>Description:</h3>
         <p>{{ $work->description }}</p>
         <h3>Link GitHub:</h3>

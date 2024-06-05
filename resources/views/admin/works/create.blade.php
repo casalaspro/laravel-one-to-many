@@ -21,6 +21,16 @@
       <input type="text" name="github_link" class="form-control" id="github_link" placeholder="http://..." value="{{ old('github_link') }}">
     </div>
 
+    <div class="mb-3">
+      <label for="type_id" class="form-label">Type</label>
+      <select class="form-control" name="type_id" id="type_id">
+        <option value="">-- Select Type --</option>
+        @foreach($types as $type) 
+          <option @selected( $type->id == old('type_id') ) value="{{ $type->id }}"> {{ $type->name }}</option>
+        @endforeach
+      </select>
+    </div>
+
     <button class="btn btn-success">Create</button>
   </form>
 

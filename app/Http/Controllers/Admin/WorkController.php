@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreWorkRequest;
 use App\Http\Requests\UpdateWorkRequest;
+use App\Models\Type;
 use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -26,7 +27,9 @@ class WorkController extends Controller
      */
     public function create()
     {
-        return view('admin.works.create');
+        $types = Type::all();
+
+        return view('admin.works.create', compact('types'));
     }
 
     /**

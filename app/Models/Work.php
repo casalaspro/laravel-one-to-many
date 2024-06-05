@@ -9,5 +9,10 @@ class Work extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'description', 'github_link'];
+    protected $fillable = ['title', 'slug', 'description', 'github_link', 'type_id'];
+
+    public function type(){
+        return $this->belongsTo(Type::class);
+    }
+    
 }

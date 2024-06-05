@@ -108,7 +108,7 @@ class WorkController extends Controller
 
         $form_data = $request->all();
 
-        dd($form_data);
+        // dd($form_data);
         $work->fill($form_data);
         $work->save();
 
@@ -121,7 +121,7 @@ class WorkController extends Controller
     public function destroy(Work $work)
     {
     
-        $work->delete;
+        $work->delete();
         return to_route('admin.works.index');
     }
 }
